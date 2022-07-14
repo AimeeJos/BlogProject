@@ -1,0 +1,31 @@
+{% extends '../main.html' %}
+{% block content %}
+
+<div class="container-fluid">
+  <h1>HOME PAGE</h1>
+    <a  class="btn btn-primary" href="{% url 'create-room'%}">CREATE ROOM</a>
+    <span><b>{{room_count}} Rooms Available</b></span>
+<hr>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+         {% include './topics_component.html' %}
+        </div>
+        <div class="col-md-6">
+       {% include './rooms_component.html' %}
+        </div>
+        <div class="col-md-3">
+          {% include './activity_component.html' %}
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

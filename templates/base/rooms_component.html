@@ -1,0 +1,50 @@
+<div>
+
+{% for room in rooms %}
+<div>
+<span><a href="{% url 'profile' room.host.id %} ">@{{room.host.username}}</a></span>
+<br>
+<a type="button" class="pst-group-item pst-group-item-action">
+{{room.id}}--<a href="{% url 'room' room.id %}">{{room.name}}</a>
+</a>
+<br>
+<small>{{room.topic.name}}</small>
+<br>
+{% if request.user == room.host %}
+<a  class="btn btn-secondary" href="{% url 'update-room' room.id %}">Edit</a>
+<a  class="btn btn-danger"  href="{% url 'delete-room' room.id %}">Delete</a>
+{% endif %}
+<hr>
+</div>
+{% endfor %}
+
+
+
+
+</div>
+
+            <!--       pagination-->
+     <div>
+
+        {% if rooms.has_previous %}
+         <a href="?page={{ rooms.previous_page_number }}">Previous</a>
+        {% else %}
+        <a>Previous</a>
+        {% endif %}
+
+        {% for i in rooms.paginator.page_range %}
+        {% if rooms.number == i %}
+        <span>{{ i }} </span>
+        {% else %}
+        <a href="?page={{ i }}">{{ i }}</a>
+        {% endif %}
+        {% endfor %}
+
+        {% if rooms.has_next %}
+        <a href="?page={{ rooms.next_page_number }}">Next</a>
+        {% else %}
+       <a >Next</a>
+        {% endif %}
+
+     </div>
+<!--            pagination ends -->

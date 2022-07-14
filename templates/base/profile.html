@@ -1,0 +1,23 @@
+{% extends '../main.html' %}
+
+{% block content %}
+<h1>{{user.username}}</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+         {% include './topics_component.html' %}
+        </div>
+        <div class="col-md-6">
+       {% include './rooms_component.html' %}
+        </div>
+        <div class="col-md-3">
+          {% include './activity_component.html' %}
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
